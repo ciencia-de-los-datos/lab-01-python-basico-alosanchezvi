@@ -284,7 +284,7 @@ def pregunta_08():
     ]
 
     """
-    return sorted([(dato,sorted(set(list(map( lambda x: x[0], list(filter(lambda x:  x[1]==dato,columns_01))))))) for dato in list(set(columns_1))] )
+    return sorted([(int(dato),sorted(set(list(map( lambda x: x[0], list(filter(lambda x:  x[1]==dato,columns_01))))))) for dato in list(set(columns_1))] )
 
 
 
