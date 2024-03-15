@@ -16,7 +16,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 def pregunta_01():
 
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -39,7 +39,7 @@ def conteo(lista):
 def pregunta_02():
 
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -70,7 +70,7 @@ def pregunta_02():
 
 def pregunta_03():
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -101,7 +101,7 @@ def pregunta_03():
 
 def pregunta_04():
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -137,7 +137,7 @@ def pregunta_04():
 
 def pregunta_05():
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -174,7 +174,7 @@ def convert_dict(valor):
 
 def busqueda(valor):
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -222,7 +222,7 @@ def pregunta_06():
 
 def pregunta_07():
     # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -254,7 +254,7 @@ def pregunta_07():
 
 def pregunta_08():
    # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -317,7 +317,7 @@ def pregunta_09():
 
 def pregunta_10():
    # Leer el archivo 
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -350,7 +350,7 @@ def pregunta_10():
 
 
 def pregunta_11():
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
@@ -384,7 +384,7 @@ def pregunta_11():
 
 
 def pregunta_12():
-    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    Data = open("data.csv", "r").readlines()
     # quitar 
     Data01=[dato.replace('\n','') for dato in Data]
     # separar los componentes de cada fila
