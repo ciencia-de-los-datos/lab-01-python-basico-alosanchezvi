@@ -14,18 +14,42 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 def pregunta_01():
-    """
-    Retorne la suma de la segunda columna.
 
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    #seleccionar y sumar la columna dos
+    valor = sum([int(dato[1]) for dato in Data02])
+    """
     Rta/
     214
 
     """
-    return
+    return valor
+
+pregunta_01()
+
+def conteo(lista):
+    return sorted([(dato,len(list(filter(lambda x: x==dato,lista )))) for dato in list(set(lista))])
 
 
 def pregunta_02():
+
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    columns_0=[dato[0] for dato in Data02]
+
+    
+  
     """
+    
     Retorne la cantidad de registros por cada letra de la primera columna como la lista
     de tuplas (letra, cantidad), ordendas alfabéticamente.
 
@@ -39,10 +63,24 @@ def pregunta_02():
     ]
 
     """
-    return
+    return conteo(columns_0)
+
+
 
 
 def pregunta_03():
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+
+    columns_0=[dato[0] for dato in Data02]
+
+    columns_01=[dato[:2] for dato in Data02]
+
+    
     """
     Retorne la suma de la columna 2 por cada letra de la primera columna como una lista
     de tuplas (letra, suma) ordendas alfabeticamente.
@@ -57,10 +95,22 @@ def pregunta_03():
     ]
 
     """
-    return
+    return sorted([(dato,sum(list(map( lambda x: int(x[1]), list(filter(lambda x:  x[0]==dato,columns_01)))))) for dato in list(set(columns_0))] )
+
 
 
 def pregunta_04():
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    columns_2=[dato[2] for dato in Data02]
+
+    mes=[dato[5:7] for dato in columns_2]
+    #pregunta_04
+    conteo(mes)
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
     registros por cada mes, tal como se muestra a continuación.
@@ -82,10 +132,23 @@ def pregunta_04():
     ]
 
     """
-    return
+    return conteo(mes)
 
 
 def pregunta_05():
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    columns_0=[dato[0] for dato in Data02]
+    columns_01=[dato[:2] for dato in Data02]
+    maximo=(lambda dato: max(list(map( lambda x: int(x[1]), list(filter(lambda x:  x[0]==dato,columns_01))))))
+    minimo=(lambda dato: min(list(map( lambda x: int(x[1]), list(filter(lambda x:  x[0]==dato,columns_01))))))
+    
+
+
     """
     Retorne una lista de tuplas con el valor maximo y minimo de la columna 2 por cada
     letra de la columa 1.
@@ -100,10 +163,36 @@ def pregunta_05():
     ]
 
     """
-    return
+    return sorted([(dato,maximo(dato),minimo(dato)) for dato in list(set(columns_0))] )
 
+def convert_dict(valor):
+    dicionario=dict([dato.split(":") for dato in valor.split(",")])
+    for k,v in dicionario.items():
+        dicionario[k]=int(dicionario[k])
+    return dicionario
+
+
+def busqueda(valor):
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+
+    columns_4 = [convert_dict(dato[4]) for dato in Data02]
+
+    lista_values=[]
+    lista_keys=[]
+    for diccionario in columns_4:
+            for keys,values in diccionario.items():
+                lista_keys.append(keys)
+                if keys==valor:
+                    lista_values.append(diccionario[keys])
+    return lista_values,list(set(lista_keys))
 
 def pregunta_06():
+
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras corresponde a
     una clave y el valor despues del caracter `:` corresponde al valor asociado a la
@@ -125,10 +214,22 @@ def pregunta_06():
     ]
 
     """
-    return
+
+    _,keys=busqueda('jjj')            
+    valor = sorted([(dato,min(busqueda(dato)[0]),max(busqueda(dato)[0])) for dato in keys])    
+    return valor
 
 
 def pregunta_07():
+    # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    columns_1=[dato[1] for dato in Data02]
+    columns_01=[dato[:2] for dato in Data02]
+    
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla contiene un
     valor posible de la columna 2 y una lista con todas las letras asociadas (columna 1)
@@ -149,10 +250,19 @@ def pregunta_07():
     ]
 
     """
-    return
-
+    return sorted([(int(dato),list(map( lambda x: x[0], list(filter(lambda x:  x[1]==dato,columns_01))))) for dato in list(set(columns_1))] )
 
 def pregunta_08():
+   # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+      
+    columns_1=[dato[1] for dato in Data02]
+    columns_01=[dato[:2] for dato in Data02]
+    
     """
     Genere una lista de tuplas, donde el primer elemento de cada tupla contiene  el valor
     de la segunda columna; la segunda parte de la tupla es una lista con las letras
@@ -174,10 +284,12 @@ def pregunta_08():
     ]
 
     """
-    return
+    return sorted([(dato,sorted(set(list(map( lambda x: x[0], list(filter(lambda x:  x[1]==dato,columns_01))))))) for dato in list(set(columns_1))] )
+
 
 
 def pregunta_09():
+
     """
     Retorne un diccionario que contenga la cantidad de registros en que aparece cada
     clave de la columna 5.
@@ -197,10 +309,24 @@ def pregunta_09():
     }
 
     """
-    return
+    _,keys=busqueda('jjj')
+
+    return dict(sorted(([(dato,len(busqueda(dato)[0])) for dato in keys])))
+                
 
 
 def pregunta_10():
+   # Leer el archivo 
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+
+    columns_0=[dato[0] for dato in Data02]
+    columns_3=[dato[3] for dato in Data02]
+    columns_4=[convert_dict(dato[4]) for dato in Data02]
+    
     """
     Retorne una lista de tuplas contengan por cada tupla, la letra de la columna 1 y la
     cantidad de elementos de las columnas 4 y 5.
@@ -218,10 +344,25 @@ def pregunta_10():
 
 
     """
-    return
+    return [(dato01,len(dato03.split(',')),len(dato04)) for dato01,dato03,dato04 in zip(columns_0,columns_3,columns_4)]
+
+
 
 
 def pregunta_11():
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    
+    #pregunta_11
+    columns_13=[dato[1::2] for dato in Data02]
+    valoresUnicos=[]
+    for dato in Data02:
+        valoresUnicos.extend(dato[3].split(','))
+    valoresUnicos=list(set(valoresUnicos)) 
+
     """
     Retorne un diccionario que contengan la suma de la columna 2 para cada letra de la
     columna 4, ordenadas alfabeticamente.
@@ -239,10 +380,19 @@ def pregunta_11():
 
 
     """
-    return
+    return dict(sorted([(dato,sum(list(map( lambda x: int(x[0]), list(filter(lambda x: dato in  x[1].split(','),columns_13)))))) for dato in valoresUnicos] ))
 
 
 def pregunta_12():
+    Data = open("D:\RAGNER\Downloads\programacion-en-python-alosanchezvi-main/data.csv", "r").readlines()
+    # quitar 
+    Data01=[dato.replace('\n','') for dato in Data]
+    # separar los componentes de cada fila
+    Data02=[dato.split('\t') for dato in Data01]
+    columns_0=[dato[0] for dato in Data02]
+    columns_4=[convert_dict(dato[4]) for dato in Data02]
+    sum_columna_4=[[dato01,sum(dato04.values())]for dato01,dato04 in zip(columns_0,columns_4)]
+    
     """
     Genere un diccionario que contengan como clave la columna 1 y como valor la suma de
     los valores de la columna 5 sobre todo el archivo.
@@ -257,4 +407,4 @@ def pregunta_12():
     }
 
     """
-    return
+    return dict(sorted([(dato,sum(list(map(lambda x: x[1], list(filter( lambda x : x[0]==dato,sum_columna_4 )))))) for dato in list(set(columns_0))]))
